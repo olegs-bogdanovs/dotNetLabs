@@ -33,7 +33,7 @@ namespace CarLibrary
         : base(name, maxSp, currSp) { }
         public override void TurboBoost()
         {
-            MessageBox.Show("Faster is b e t t e r . . . ", "Ramming speed!");
+            MessageBox.Show("Faster is better", "Ramming speed!");
         }
     }
 
