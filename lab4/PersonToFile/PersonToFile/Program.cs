@@ -27,7 +27,8 @@ namespace PersonToFile
             FileInfo file = new FileInfo(filename);
             if (!file.Exists)
             {
-                file.Create();
+                Console.WriteLine("File doesn't exist. Creating File");
+                file.Create().Close();
             }
         }
 
@@ -72,11 +73,15 @@ namespace PersonToFile
             pers2.age = 32;
             pers2.perCode = "1231231230123123231";
 
+            Console.WriteLine();
+            Console.WriteLine("Writing data into file! ");
             BinaryFormatter binFormat = new BinaryFormatter();
             FileStream fStream = new FileStream(@".\PERSON\persons.dat", FileMode.Open, FileAccess.ReadWrite, FileShare.None);
             binFormat.Serialize(fStream, pers1);
             binFormat.Serialize(fStream, pers2);
             fStream.Close();
+
+            outputFileInfo(@".\PERSON\persons.dat");
 
 
             fStream = new FileStream(@".\PERSON\persons.dat", FileMode.Open, FileAccess.ReadWrite, FileShare.None);
